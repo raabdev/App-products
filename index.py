@@ -31,10 +31,13 @@ class Product:
 
     def add_product(self):
         if self.validation():
-            print(self.name.get())
-            print(self.price.get())
+            query = 'INSERT INTO product VALUES(NULL, ?, ?)'
+            parameters = (self.name.get(), self.price.get())
+            self.run_query(query, parameters)
+            print('data saved')
         else:
             print('el nombre y el precio son requeridos')
+        self.get_products()
 
 
     def __init__(self, window):
